@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float _movementSpeed = 2f;
     [SerializeField] float _jumpForce = 2f;
+    [SerializeField] float maxSpeed = 10f;
 
     PlayerInputAction playerAction;
     Rigidbody rb;
@@ -34,19 +35,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleJump(InputAction.CallbackContext context)
     {
-        
+
         if (context.performed)
         {
-           
-            rb.AddForce(Vector3.up * _jumpForce ,ForceMode.VelocityChange);
+
+            rb.AddForce(Vector3.up * _jumpForce, ForceMode.VelocityChange);
         }
     }
 
     private void HandleMovement()
     {
+        if (Mathf.Abs(rb.velocity.z) > _movementSpeed) { return; }
         float forwardValue = playerAction.Player.Movement.ReadValue<float>();
 
-        rb.AddForce(Vector3.forward * forwardValue * _movementSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
+        rb.AddForce(Vector3.forward * forwardValue * _movementSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
     }
 }

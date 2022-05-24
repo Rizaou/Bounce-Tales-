@@ -511,6 +511,16 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 551569714, guid: 314889a68a49f5c4f811d739dc871c8b, type: 3}
+      propertyPath: _movementSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865229174089986531, guid: 314889a68a49f5c4f811d739dc871c8b,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: b0ab1a4419c22c44dbebdb2bc6cb89fc,
+        type: 2}
     - target: {fileID: 8053296080792306698, guid: 314889a68a49f5c4f811d739dc871c8b,
         type: 3}
       propertyPath: m_RootOrder
