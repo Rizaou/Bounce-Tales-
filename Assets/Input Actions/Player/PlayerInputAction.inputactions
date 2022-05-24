@@ -9,17 +9,26 @@
                     "name": "Movement",
                     "type": "Value",
                     "id": "1df49510-c7f8-432d-9f1e-a923c0d43d5d",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "5f702a5b-c9d5-4556-a237-15fe76ee94c9",
+                    "expectedControlType": "Button",
+                    "processors": "Normalize(max=1)",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "Left/Right - Up/Down Movement",
-                    "id": "6c64fd56-4e87-4c8a-b523-71a6b4e2f78b",
-                    "path": "2DVector",
+                    "name": "1D Axis",
+                    "id": "c6dc1ada-afe5-4c7e-8e2b-158642516b2c",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -28,30 +37,8 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "c87c280e-9357-453b-8b58-218aa3730655",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "10828738-2424-4b4b-9fd2-90a6f8d2fb71",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "8f21d86a-3c54-4a47-ab77-2a4b6a9bbef6",
+                    "name": "negative",
+                    "id": "f4143f82-92bb-41d7-ad1e-307124c64608",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -61,8 +48,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "69b23cb5-328e-4cf3-aa2d-83222d291601",
+                    "name": "positive",
+                    "id": "5b0c0da2-1369-47c5-aa5d-999aaa9bccaf",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -70,6 +57,17 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "acc7665e-776e-4328-a9a3-3f215bd5529b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
