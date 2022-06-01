@@ -873,10 +873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6778111e3ed0c4198d04b90932ef47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dolly: {fileID: 0}
-  waterOffset: {x: 0, y: -20, z: 0}
-  transposer: {fileID: 0}
-  _speed: 1
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,6 +2024,11 @@ PrefabInstance:
       propertyPath: _waterSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7738618707684235844, guid: 314889a68a49f5c4f811d739dc871c8b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cdcf5fb3089193f4f9209cc3a7c138f6, type: 2}
     - target: {fileID: 8053296080792306698, guid: 314889a68a49f5c4f811d739dc871c8b,
         type: 3}
       propertyPath: m_RootOrder
