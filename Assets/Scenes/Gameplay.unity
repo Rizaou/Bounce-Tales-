@@ -1410,6 +1410,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 551569714, guid: 314889a68a49f5c4f811d739dc871c8b, type: 3}
+      propertyPath: _landSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 551569714, guid: 314889a68a49f5c4f811d739dc871c8b, type: 3}
+      propertyPath: _waterSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8053296080792306698, guid: 314889a68a49f5c4f811d739dc871c8b,
         type: 3}
       propertyPath: m_RootOrder

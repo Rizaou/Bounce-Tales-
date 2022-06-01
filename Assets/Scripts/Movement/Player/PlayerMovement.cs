@@ -9,8 +9,10 @@ public class PlayerMovement : MonoBehaviour
 {
 
 
-    [SerializeField] float _movementSpeed = 2f;
-    [SerializeField] float _jumpForce = 2f;
+    [SerializeField] float _landSpeed = 5f;
+    [SerializeField] float _waterSpeed = 1f;
+    [SerializeField] float _landJumpForce = 10f;
+    [SerializeField] float _waterJumpForce = 5f;
     [SerializeField] float maxSpeed = 10f;
 
     public Action whenInWater;
@@ -63,13 +65,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void LandJump()
     {
-        rb.AddForce(Vector3.up * _jumpForce, ForceMode.VelocityChange);
+        rb.AddForce(Vector3.up * _landJumpForce, ForceMode.VelocityChange);
         isJumping = true;
     }
 
     private void WaterJump()
     {
-
+        rb.AddForce(Vector3.up * _waterJumpForce, ForceMode.VelocityChange);
+        isJumping = false;
     }
 
     private void HandleMovement()
@@ -91,15 +94,19 @@ public class PlayerMovement : MonoBehaviour
     private void LandMovement()
     {
 
-        if (Mathf.Abs(rb.velocity.z) > _movementSpeed) { return; }
+        if (Mathf.Abs(rb.velocity.z) > _landSpeed) { return; }
         float forwardValue = playerAction.Player.Movement.ReadValue<float>();
 
-        rb.AddForce(Vector3.forward * forwardValue * _movementSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        rb.AddForce(Vector3.forward * forwardValue * _landSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
     }
 
     private void WaterMovement()
     {
+        if (Mathf.Abs(rb.velocity.magnitude) > _waterSpeed) { return; }
+        float forwardValue = playerAction.Player.Movement.ReadValue<float>();
+
+        rb.AddForce(Vector3.forward * forwardValue * _waterSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
     }
 
@@ -121,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         {
             inWater = true;
             whenInWater();
-            
+
         }
     }
 
