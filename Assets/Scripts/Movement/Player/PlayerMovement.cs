@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
 
-
+    [SerializeField] SBallPreferences ballPreferences;
     [SerializeField] float _landSpeed = 5f;
     [SerializeField] float _waterSpeed = 1f;
     [SerializeField] float _landJumpForce = 10f;
@@ -65,13 +65,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void LandJump()
     {
-        rb.AddForce(Vector3.up * _landJumpForce, ForceMode.VelocityChange);
+        rb.AddForce(Vector3.up * ballPreferences.LandJumpForce, ForceMode.VelocityChange);
         isJumping = true;
     }
 
     private void WaterJump()
     {
-        rb.AddForce(Vector3.up * _waterJumpForce, ForceMode.VelocityChange);
+        rb.AddForce(Vector3.up * ballPreferences.WaterJumpForce, ForceMode.VelocityChange);
         isJumping = false;
     }
 
@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(rb.velocity.z) > _landSpeed) { return; }
         float forwardValue = playerAction.Player.Movement.ReadValue<float>();
 
-        rb.AddForce(Vector3.forward * forwardValue * _landSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        rb.AddForce(Vector3.forward * ballPreferences.LandSpeed * forwardValue * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
     }
 
@@ -106,7 +106,14 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(rb.velocity.magnitude) > _waterSpeed) { return; }
         float forwardValue = playerAction.Player.Movement.ReadValue<float>();
 
-        rb.AddForce(Vector3.forward * forwardValue * _waterSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        rb.AddForce(Vector3.forward * forwardValue * ballPreferences.WaterSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+
+    }
+
+    private void ChangeMaterial()
+    {
+        MeshRenderer material = GetComponent<MeshRenderer>();
+        material.material = ballPreferences.Material;
 
     }
 
@@ -142,4 +149,12 @@ public class PlayerMovement : MonoBehaviour
             whenInLand();
         }
     }
+
+
+    public void ChangeBallPreferences(SBallPreferences preferences)
+    {
+        ballPreferences = preferences;
+        ChangeMaterial();
+    }
+
 }

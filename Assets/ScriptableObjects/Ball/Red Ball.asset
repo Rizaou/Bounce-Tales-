@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c820efe965ebe349a41572c2b78d6af, type: 3}
+  m_Name: Red Ball
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: cdcf5fb3089193f4f9209cc3a7c138f6, type: 2}
+  _landSpeed: 5
+  _waterSpeed: 2
+  _landJumpForce: 10
+  _waterJumpForce: 5
+  maxSpeed: 10
