@@ -5,12 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class InGameUIManager : MonoBehaviour
 {
+    public static InGameUIManager instance;
     [SerializeField] GameObject _pauseButton;
     [SerializeField] GameObject _pausedPanel;
 
     bool _paused = false;
 
     public bool isPasued => _paused;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void PauseButton()
     {
@@ -28,6 +34,11 @@ public class InGameUIManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
+    }
     public void GoMenu()
     {
         ResumeButton();

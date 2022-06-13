@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 5865229174089986531}
   - component: {fileID: 551569715}
   - component: {fileID: 551569714}
+  - component: {fileID: 1489942994}
+  - component: {fileID: 1489943000}
+  - component: {fileID: 8305931420268461584}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -34,7 +37,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2812699375961200338
 MeshFilter:
@@ -64,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: cdcf5fb3089193f4f9209cc3a7c138f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,6 +130,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e668a2d0edcc0004a8d4c286f44dc1e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 5
-  _jumpForce: 10
+  ballPreferences: {fileID: 11400000, guid: d50ced680d967704da3d0931a7298efc, type: 2}
+  _landSpeed: 5
+  _waterSpeed: 2
+  _landJumpForce: 10
+  _waterJumpForce: 5
   maxSpeed: 10
+--- !u!114 &1489942994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505875829990729706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2625fe9fa5645e34fb481c51772e4573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xSpeed: 1
+  ySpeed: 1
+--- !u!114 &1489943000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505875829990729706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b44a98143cd3a46af09dbcbc659dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreText: {fileID: 0}
+  score: 0
+--- !u!114 &8305931420268461584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505875829990729706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ed753210ccd7e49b005bbb2b65520a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
