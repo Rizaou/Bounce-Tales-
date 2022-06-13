@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static MusicPlayer instance;
+
+    [SerializeField] GameObject _musicPrefab;
+    [SerializeField] GameObject _createdMusic = null;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
-        
+        DontDestroyOnLoad(this.gameObject);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CreateMusicPlayer()
     {
-        
+        if (_createdMusic) { return; }
+
+        _createdMusic = Instantiate(_musicPrefab, null);
+
+        DontDestroyOnLoad(_createdMusic);
     }
 }
