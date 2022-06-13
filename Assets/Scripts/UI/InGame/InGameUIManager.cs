@@ -8,7 +8,7 @@ public class InGameUIManager : MonoBehaviour
     public static InGameUIManager instance;
     [SerializeField] GameObject _pauseButton;
     [SerializeField] GameObject _pausedPanel;
-
+    [SerializeField] GameObject _touchControls;
     bool _paused = false;
 
     public bool isPasued => _paused;
@@ -20,6 +20,7 @@ public class InGameUIManager : MonoBehaviour
 
     public void PauseButton()
     {
+        DisableTouchControl();
         _paused = true;
         _pauseButton.SetActive(false);
         _pausedPanel.SetActive(true);
@@ -28,8 +29,10 @@ public class InGameUIManager : MonoBehaviour
 
     public void ResumeButton()
     {
+        EnableTouchControl();
         _paused = false;
         _pauseButton.SetActive(true);
+        _touchControls.SetActive(true);
         _pausedPanel.SetActive(false);
         Time.timeScale = 1f;
     }
@@ -43,5 +46,15 @@ public class InGameUIManager : MonoBehaviour
     {
         ResumeButton();
         SceneManager.LoadScene(0);
+    }
+
+    public void EnableTouchControl()
+    {
+        _touchControls.SetActive(true);
+    }
+
+    public void DisableTouchControl()
+    {
+         _touchControls.SetActive(false);
     }
 }

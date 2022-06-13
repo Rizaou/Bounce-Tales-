@@ -30,19 +30,45 @@ public class PlayerMovement : MonoBehaviour
         playerAction = new PlayerInputAction();
         playerAction.Player.Enable();
         playerAction.Player.Jump.performed += HandleJump;
-    }
 
+
+    }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        if (OnMobilePhone)
+        {
+            EnableTouchControls();
+        }
+        else
+        {
+            DisableTouchControls();
+        }
     }
+
+   
+
+
 
     private void FixedUpdate()
     {
         HandleMovement();
 
     }
+
+     private void DisableTouchControls()
+    {
+        InGameUIManager.instance.DisableTouchControl();
+    }
+
+    private void EnableTouchControls()
+    {
+        InGameUIManager.instance.EnableTouchControl();
+    }
+
+    private bool OnMobilePhone => Application.isMobilePlatform;
 
     private void HandleJump(InputAction.CallbackContext context)
     {
