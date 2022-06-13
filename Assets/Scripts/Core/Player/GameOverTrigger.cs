@@ -15,6 +15,8 @@ public class GameOverTrigger : MonoBehaviour
 
     public void GameOver()
     {
+        GameObject player = GameObject.FindWithTag("Player");
+        player.GetComponent<Rigidbody>().useGravity = false;
         Debug.LogError("Game Over");
     }
 }
