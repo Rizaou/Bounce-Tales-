@@ -21,7 +21,7 @@ public class MusicPlayer : MonoBehaviour
 
     public void CreateMusicPlayer()
     {
-        if (_createdMusic) { return; }
+        if (GameObject.FindWithTag("Music")) { return; }
 
         _createdMusic = Instantiate(_musicPrefab, null);
 
