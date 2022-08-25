@@ -1,9 +1,9 @@
 # Bounce-Tales-
 
 <img src="https://github.com/Rizaou/Bounce-Tales-/blob/readme.md_file/images/menu.jpg"/>
----
+<hr style="border:2px solid blue">
 <img src="https://github.com/Rizaou/Bounce-Tales-/blob/readme.md_file/images/1.jpg"/>
-----
+<hr style="border:2px solid blue">
 <img src="https://github.com/Rizaou/Bounce-Tales-/blob/readme.md_file/images/2.jpg"/>
 <hr style="border:2px solid blue">
 
