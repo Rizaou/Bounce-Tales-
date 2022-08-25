@@ -30,19 +30,45 @@ public class PlayerMovement : MonoBehaviour
         playerAction = new PlayerInputAction();
         playerAction.Player.Enable();
         playerAction.Player.Jump.performed += HandleJump;
-    }
 
+
+    }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        if (OnMobilePhone)
+        {
+            EnableTouchControls();
+        }
+        else
+        {
+            DisableTouchControls();
+        }
     }
+
+
+
+
 
     private void FixedUpdate()
     {
         HandleMovement();
 
     }
+
+    private void DisableTouchControls()
+    {
+        InGameUIManager.instance.DisableTouchControl();
+    }
+
+    private void EnableTouchControls()
+    {
+        InGameUIManager.instance.EnableTouchControl();
+    }
+
+    private bool OnMobilePhone => Application.isMobilePlatform;
 
     private void HandleJump(InputAction.CallbackContext context)
     {
@@ -77,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (isJumping) { return; }
+        if (!playerAction.Player.Movement.inProgress) { return; }
 
         if (inWater)
         {
@@ -91,12 +117,23 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private float lastSpeed = 0f;
     private void LandMovement()
     {
 
         if (Mathf.Abs(rb.velocity.z) > _landSpeed) { return; }
+
         float forwardValue = playerAction.Player.Movement.ReadValue<float>();
 
+        if ((forwardValue >= 0 && lastSpeed < 0) || (forwardValue <= 0 && lastSpeed > 0))
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, -rb.velocity.z);
+        }
+
+
+
+
+        lastSpeed = forwardValue;
         rb.AddForce(Vector3.forward * ballPreferences.LandSpeed * forwardValue * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
     }
@@ -104,8 +141,16 @@ public class PlayerMovement : MonoBehaviour
     private void WaterMovement()
     {
         if (Mathf.Abs(rb.velocity.magnitude) > _waterSpeed) { return; }
+
         float forwardValue = playerAction.Player.Movement.ReadValue<float>();
 
+        if ((forwardValue >= 0 && lastSpeed < 0) || (forwardValue <= 0 && lastSpeed > 0))
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, -rb.velocity.z);
+        }
+
+        lastSpeed = forwardValue;
+        
         rb.AddForce(Vector3.forward * forwardValue * ballPreferences.WaterSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
     }

@@ -14,7 +14,9 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void StartButton()
     {
-        SceneManager.LoadSceneAsync(1);
+        MusicPlayer.instance.CreateMusicPlayer();
+
+        SceneManager.LoadScene(1);
     }
 
     public void ExitButton()
@@ -22,5 +24,5 @@ public class MainMenuUIManager : MonoBehaviour
         Application.Quit();
     }
 
-   
+
 }
