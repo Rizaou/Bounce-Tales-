@@ -11,3 +11,4 @@
 * On pc, you can move the ball forward and backward using 'a' and 's' keys. Using 'space' key, bounce or swim the ball.
 * There is only one level in the game.
 * I created the models using Blender.
+* Also git LFS was enabled.
