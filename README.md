@@ -1,2 +1,3 @@
 # Bounce-Tales-
-Bounce Tales Game Made In Unity
+
+<img src="https://github.com/Rizaou/Bounce-Tales-/blob/readme.md_file/images/1.jpg" width ="256" />
